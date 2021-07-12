@@ -1,8 +1,9 @@
 {
+  "databaseType": "{{$global.env.DB_TYPE}}",
   "databaseName": "{{$global.env.JASPERREPORTS_DATABASE_NAME}}",
   "databasePassword": "{{$global.env.JASPERREPORTS_DATABASE_PASSWORD}}",
-  "databaseServerHost": "{{$global.env.MARIADB_HOST}}",
-  "databaseServerPort": "{{$global.env.MARIADB_PORT_NUMBER}}",
+  "databaseServerHost": "{{$global.env.DB_HOST}}",
+  "databaseServerPort": "{{$global.env.DB_PORT_NUMBER}}",
   "databaseUser": "{{$global.env.JASPERREPORTS_DATABASE_USER}}",
   "email": "{{$global.env.JASPERREPORTS_EMAIL}}",
   "password": "{{$global.env.JASPERREPORTS_PASSWORD}}",

@@ -34,6 +34,13 @@
         "type": "NAMI",
         "version": "10.3.30-0"
     },
+    "postgresql-client": {
+        "arch": "amd64",
+        "digest": "1202c736e3c5b28de1dd1deb05eb2d68bd7ebccc54c9ed1eab05220f346456c3",
+        "distro": "debian-10",
+        "type": "NAMI",
+        "version": "13.3.0-0"
+    },
     "tini": {
         "arch": "amd64",
         "digest": "9b1f1c095944bac88a62c1b63f3bff1bb123aa7ccd371c908c0e5b41cec2528d",

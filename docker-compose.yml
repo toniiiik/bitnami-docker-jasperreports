@@ -8,21 +8,42 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - 'mariadb_data:/bitnami'
+  postgresql:
+    image: postgres
+    volumes: 
+      - pgdata:/var/lib/postgresql/data/pgdata
+    environment: 
+      - POSTGRES_USER=bn_jasperreports
+      - POSTGRES_PASSWORD=bitnami_jasperreports
+      - POSTGRES_DB=bitnami_jasperreports
+      - PGDATA=/var/lib/postgresql/data/pgdata
   jasperreports:
-    image: docker.io/bitnami/jasperreports:7
+    image: jr
     environment:
-      - MARIADB_HOST=mariadb
-      - MARIADB_PORT_NUMBER=3306
+      - NAMI_LOG_LEVEL=trace
+      # - DB_HOST=mariadb
+      # - DB_PORT_NUMBER=3306
+      # - DB_TYPE=mysql
+      - DB_HOST=postgresql
+      - DB_PORT_NUMBER=5432
+      - DB_TYPE=postgresql
+      - JASPERREPORTS_USERNAME=tlmdadmin
+      - JASPERREPORTS_PASSWORD=admin
       - JASPERREPORTS_DATABASE_USER=bn_jasperreports
       - JASPERREPORTS_DATABASE_NAME=bitnami_jasperreports
+      - JASPERREPORTS_DATABASE_PASSWORD=bitnami_jasperreports
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - '80:8080'
     volumes:
       - 'jasperreports_data:/bitnami'
+      # - ./7/debian-10/nami/com.bitnami.jasperreports:/root/.nami/components/com.bitnami.jasperreports
     depends_on:
       - mariadb
+      - postgresql
 volumes:
+  pgdata:
+    driver: local
   mariadb_data:
     driver: local
   jasperreports_data:

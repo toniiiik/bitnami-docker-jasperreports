@@ -1,0 +1,111 @@
+{
+    "id": "com.bitnami.jasperreports",
+    "name": "jasperreports",
+    "extends": ["Component"],
+    "revision": "6",
+    "author":     {
+        "name": "Bitnami",
+        "url": "https://bitnami.com"
+    },
+    "version": "7.8.0",
+    "expects":     [
+        "com.bitnami.postgresql-client",
+        "com.bitnami.mysql-client",
+        "com.bitnami.tomcat",
+        "com.bitnami.java"
+    ],
+    "properties":     {
+        "username":         {
+            "description": "User of the application",
+            "default": "user",
+            "required": true
+        },
+        "password":         {
+            "description": "Application password",
+            "default": "bitnami",
+            "type": "password",
+            "required": true
+        },
+        "email":         {
+            "description": "Application mail",
+            "default": "user@example.com"
+        },
+        "smtpHost":         {
+            "description": "SMTP Host",
+            "default": ""
+        },
+        "smtpPort":         {
+            "description": "SMTP Port",
+            "default": ""
+        },
+        "smtpProtocol":         {
+            "description": "SMTP Protocol",
+            "default": ""
+        },
+        "smtpUser":         {
+            "description": "SMTP User",
+            "default": ""
+        },
+        "smtpPassword":         {
+            "description": "SMTP Password",
+            "default": "",
+            "type": "password"
+        },
+        "smtpEmail":         {
+            "description": "SMTP Email",
+            "default": ""
+        },
+        "databaseType":         {
+            "description": "Database Server type [mariadb,postgresql]",
+            "default": "postgresql"
+        },
+        "databaseServerHost":         {
+            "description": "Database Server Host",
+            "default": "127.0.0.1"
+        },
+        "databaseServerPort":         {
+            "description": "Database Server Port",
+            "default": 3306
+        },
+        "databaseName":         {
+            "description": "Name of the database the application will connect to",
+            "default": "bitnami_jasperreports"
+        },
+        "databaseUser":         {
+            "description": "Name of the database user that the application will connect with",
+            "default": "bn_jasperreports"
+        },
+        "databasePassword":         {
+            "description": "Password for the database user",
+            "default": ""
+        },
+        "dataToPersist":         {
+            "description": "Data that will be persisted",
+            "value":             [
+                "buildomatic/default_master.properties",
+                "buildomatic/bin/app-server.xml",
+                "buildomatic/js-install-ce.sh",
+                "buildomatic/conf_source/db/mysql/db.template.properties",
+                "buildomatic/conf_source/db/postgresql/db.template.properties",
+                ".jrsks",
+                ".jrsksp",
+                "buildomatic/keystore.init.properties"
+            ]
+        },
+        "persistDir":         {
+            "description": "Directory to backup application folders",
+            "value": "/bitnami/jasperreports"
+        }
+    },
+    "installation":     {
+        "prefix": "jasperreports",
+        "packaging": {"components": [        {
+            "name": "jasperreports",
+            "owner": "root",
+            "folders": [            {
+                "name": "jasperreports",
+                "files": [{"origin": ["files/jasperreports/*"]}]
+            }]
+        }]}
+    }
+}
